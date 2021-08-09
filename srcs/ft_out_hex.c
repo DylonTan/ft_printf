@@ -13,10 +13,8 @@ void	ft_out_print_hex_prefix(t_data *data, int is_caps)
 	}
 }
 
-void	ft_out_print_hex(t_data *data, char *num, int is_caps, int is_hash)
+void	ft_out_print_hex(t_data *data, char *num, int is_caps)
 {
-	if (is_hash)
-		data->is_hash = 1;
 	if (!(ft_strlen(num) == 1 && num[0] == '0'))
 		ft_out_print_hex_prefix(data, is_caps);
 	if (data->is_minus)
@@ -65,21 +63,29 @@ void	ft_out_hex(t_data *data, int is_caps)
 			- num_len - + (data->is_hash * 2);
 	else
 		data->width = 0;
-	ft_out_print_hex(data, num, is_caps, 0);
+	ft_out_print_hex(data, num, is_caps);
 	free(num);
+}
+
+void	ft_handle_nptr(t_data *data, long long n, char **num)
+{
+	*num = ft_itoa_base(n, 16, 0);
+	data->is_hash = 1;
 }
 
 void	ft_out_ptr(t_data *data)
 {
-	unsigned long		n;
-	char				*num;
-	int					num_len;
+	long long		n;
+	char			*num;
+	int				num_len;
 
-	n = (unsigned long) va_arg(data->args, void *);
+	n = (long long) va_arg(data->args, void *);
+	if (n < 0)
+		n = ULLONG_MAX + n + 1;
 	if (n == 0)
 		num = ft_strdup("0x0");
 	else
-		num = ft_itoa_base(n, 16, 0);
+		ft_handle_nptr(data, n, &num);
 	if (!num)
 		return ;
 	num_len = (int) ft_strlen(num);
@@ -92,6 +98,6 @@ void	ft_out_ptr(t_data *data)
 			- num_len - + (data->is_hash * 2);
 	else
 		data->width = 0;
-	ft_out_print_hex(data, num, 0, n != 0);
+	ft_out_print_hex(data, num, 0);
 	free(num);
 }

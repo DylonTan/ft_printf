@@ -20,7 +20,7 @@ static char	*ft_strrev(char *str)
 	return (str);
 }
 
-static int	num_len_radix(unsigned int num, unsigned int radix)
+static int	num_len_radix(unsigned long long num, unsigned long long radix)
 {
 	int	len;
 
@@ -33,7 +33,8 @@ static int	num_len_radix(unsigned int num, unsigned int radix)
 	return (len);
 }
 
-char	*ft_itoa_base(unsigned int num, unsigned int radix, int is_caps)
+char	*ft_itoa_base(unsigned long long num,
+	unsigned long long radix, int is_caps)
 {
 	char	*str;
 	char	*base;

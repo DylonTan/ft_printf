@@ -15,8 +15,8 @@ all: $(NAME)
 
 $(NAME):
 	@cd libft; make re; cd ..;
-	$(CC) -c $(FLAGS) $(OPTIONS) $(SRCS)
-	ar rcs $(NAME) $(OBJS) $(LIBFT)/*.o
+	$(CC) $(FLAGS) $(OPTIONS) $(SRCS) libft/libft.a
+	#ar rcs $(NAME) $(OBJS) $(LIBFT)/*.o
 
 clean:
 	rm -f $(OBJS)

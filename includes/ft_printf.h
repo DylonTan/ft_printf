@@ -38,7 +38,8 @@ void	ft_out_ptr(t_data *data);
 
 char	*ft_utoa(unsigned int n);
 
-char	*ft_itoa_base(unsigned int num, unsigned int radix, int is_caps);
+char	*ft_itoa_base(unsigned long long num,
+			unsigned long long radix, int is_caps);
 
 int		ft_printf(const char *str, ...);
 
