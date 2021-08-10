@@ -1,7 +1,7 @@
 #include "ft_printf.h"
 #include "libft.h"
 
-int	ft_is_specifier(char c)
+static int	ft_is_specifier(char c)
 {
 	char	*specifiers;
 	size_t	i;

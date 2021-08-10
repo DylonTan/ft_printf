@@ -1,7 +1,7 @@
 #include "ft_printf.h"
 #include "libft.h"
 
-void	ft_out_print_int_sign(t_data *data, char **num)
+static void	ft_out_print_int_sign(t_data *data, char **num)
 {
 	if ((*num)[0] == '-')
 	{
@@ -14,7 +14,7 @@ void	ft_out_print_int_sign(t_data *data, char **num)
 		data->count += write(1, "+", 1);
 }
 
-void	ft_out_print_int(t_data *data, char *num)
+static void	ft_out_print_int(t_data *data, char *num)
 {
 	int	len;
 

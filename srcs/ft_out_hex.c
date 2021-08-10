@@ -2,7 +2,7 @@
 #include "ft_printf.h"
 #include "libft.h"
 
-void	ft_out_print_hex_prefix(t_data *data, int is_caps)
+static void	ft_out_print_hex_prefix(t_data *data, int is_caps)
 {
 	if (data->is_hash)
 	{
@@ -13,7 +13,7 @@ void	ft_out_print_hex_prefix(t_data *data, int is_caps)
 	}
 }
 
-void	ft_out_print_hex(t_data *data, char *num, int is_caps)
+static void	ft_out_print_hex(t_data *data, char *num, int is_caps)
 {
 	if (!(ft_strlen(num) == 1 && num[0] == '0'))
 		ft_out_print_hex_prefix(data, is_caps);
@@ -67,7 +67,7 @@ void	ft_out_hex(t_data *data, int is_caps)
 	free(num);
 }
 
-void	ft_handle_nptr(t_data *data, long long n, char **num)
+static void	ft_handle_nptr(t_data *data, long long n, char **num)
 {
 	*num = ft_itoa_base(n, 16, 0);
 	data->is_hash = 1;
